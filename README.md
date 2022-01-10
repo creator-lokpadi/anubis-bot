@@ -1,8 +1,40 @@
+<!-- created by anubiskun -->
+
+[![website](https://img.shields.io/badge/-website-black.svg?style=for-the-badge&logo=firefoxbrowser&colorB=555)](https://www.anubiskun.xyz)
+[![api rest](https://img.shields.io/badge/-api_rest-black.svg?style=for-the-badge&logo=firefoxbrowser&colorB=555)](https://www.api.anubiskun.xyz)
+[![github](https://img.shields.io/badge/-Github-black.svg?style=for-the-badge&logo=github&colorB=555)](https://github.com/anubiskun)
+[![telegram](https://img.shields.io/badge/-Telegram-black.svg?style=for-the-badge&logo=telegram&colorB=555)](https://t.me/anubiskun)
+[![whatsapp](https://img.shields.io/badge/-Whatsapp-black.svg?style=for-the-badge&logo=whatsapp&colorB=555)](https://wa.me/6289653909054?text=hai,%20anubis)
+![Profile views](https://gpvc.arturio.dev/anubiskun)
+<!-- PROJECT LOGO -->
+
+<br />
+<p align="center">
+  <a href="https://github.com/anubiskun/profile">
+    <img src="https://github.com/anubiskun.png?size=250" alt="Logo" width="250px">
+  </a>
+
+  <h3 align="center">Profile</h3>
+
+  <p align="center">
+    <a href="https://www.anubiskun.xyz/"><strong>Explore the docs ?</strong></a>
+    <br />
+    <a href="https://t.me/anubiskun">Report Bug</a>
+  </p>
+</p>
+<!-- isi content -->
+
 # anubis-bot
 
 Simple WhatsApp Bot
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/anubiskun/anubis-bot)
+
+## NEW JSON DATABASE FOR HEROKU
+[![JSON DATABASE](https://img.shields.io/badge/-json_database-black.svg?style=for-the-badge&logo=github&colorB=555)](https://github.com/anubiskun/anubis-bot-database)
+```
+https://github.com/anubiskun/anubis-bot-database
+```
 
 ## FOR TERMUX/UBUNTU/SSH USER
 
@@ -97,11 +129,9 @@ Used for [heroku](https://heroku.com/) or scan through website
 ### `--db <json-server-url>`
 
 Use external db instead of local db, 
-Example Server `https://json-server.nurutomo.repl.co/`
+## [ANUBIS-BOT-DATABASE](https://github.com/anubiskun/anubis-bot-database)
 
-Code: `https://repl.it/@Nurutomo/json-server`
-
-`node . --db 'https://json-server.nurutomo.repl.co/'`
+`node . --server --db 'https://database-botwa.herokuapp.com/anubis'`
 
 The server should have like this specification
 
@@ -163,7 +193,7 @@ jadibot: false,
 
 ---------
 
-[![Nurutomo](https://github.com/Nurutomo.png?size=100)](https://github.com/Nurutomo) | [![Ariffb](https://github.com/anubiskun.png?size=100)](https://github.com/anubiskun)
+[![Nurutomo](https://github.com/Nurutomo.png?size=100)](https://github.com/Nurutomo) | [![Anubis](https://github.com/anubiskun.png?size=100)](https://github.com/anubiskun)
 ----|----
 [Nurutomo](https://github.com/Nurutomo) | [anubiskun](https://github.com/anubiskun)
 Author / Creator | Rewrite / Recode
