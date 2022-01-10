@@ -36,6 +36,9 @@ Simple WhatsApp Bot
 https://github.com/anubiskun/anubis-bot-database
 ```
 
+## BOT WHATSAPP NUMBER
+[![BOT WHATSAPP](https://img.shields.io/badge/-Number_WA_Bot-black.svg?style=for-the-badge&logo=whatsapp&colorB=555)](https://wa.me/6281282091206?text=.donasi)
+
 ## FOR TERMUX/UBUNTU/SSH USER
 
 ```bash
