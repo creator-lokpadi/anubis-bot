@@ -2,24 +2,31 @@ const { joox } = require('../lib/scrape_joox')
 
 const isUrl = str => /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&/=]*)/gi.test(str)
 let handler = async (m, { conn, text, usedPrefix, command }) => {
-    if (!text) throw `*Perintah ini untuk mencari lagu joox berdasarkan pencarian*\n\ncontoh:\n${usedPrefix + command} akad`
-    if (isUrl(text)) throw `*Perintah ini untuk mencari lagu joox berdasarkan pencarian bukan link*\n\ncontoh:\n${usedPrefix + command} akad`
-    let json = await joox(text)
-    let result = json.data[Math.floor(Math.random() * json.data.length)]
+    if (!text) throw `*Perintah ini untuk mendownload lagu joox berdasarkan url*\n\ncontoh:\n${usedPrefix + command} https://www.joox.com/id/single/X4_JLatiqHfi6UVPfmLTPA==`
+    if (!isUrl(text)) throw `*Perintah ini untuk mendownload lagu joox berdasarkan url*\n\ncontoh:\n${usedPrefix + command} https://www.joox.com/id/single/X4_JLatiqHfi6UVPfmLTPA==\n\nJika Link yang anda masukan error coba hubungi owner`
+    const getidJoox = text.match(/https?:\/\/(www\.)?joox\.[a-z]+\/[a-z]+\/\w+\/([-a-zA-Z0-9()@:%_+.~#?&/=]*)/)
+    let jjson = await joox(getidJoox[2])
+    let json = jjson.data[Math.floor(Math.random() * jjson.data.length)]
+    if (json==null) return m.reply('error lagu ga bisa di download!')
     let pesan = `
-*Penyanyi:* ${result.penyanyi}
-*Judul:* ${result.lagu}
-*Album:* ${result.album}
-*Diterbitkan:* ${result.publish}
-*Link:* ${result.mp3}
+*Penyanyi:* ${json.msinger}
+*Judul:* ${json.msong}
+*Album:* ${json.malbum}
+*Diterbitkan:* ${json.public_time}
+*Link:* ${await shortlink(json.mp3Url)}
 `.trim()
-    conn.sendFile(m.chat, result.img, 'error.jpg', pesan, m, false, { thumbnail: Buffer.alloc(0) })
-    conn.sendFile(m.chat, result.mp3, 'error.mp3', '', m, false, { mimetype: 'audio/mp4' })
+    conn.sendFile(m.chat, json.imgSrc, 'anubis-bot.jpg', pesan, m, false, { thumbnail: Buffer.alloc(0) })
+    conn.sendFile(m.chat, json.mp3Url, 'anubis-bot.mp3', '', m, false, { mimetype: 'audio/mp4' })
 }
 
-handler.help = ['joox'].map(v => v + ' <judul>')
+handler.help = ['joox'].map(v => v + ' <url>')
 handler.tags = ['downloader']
-handler.command = /^joox$/i
+handler.command = /^(joox|jxdl)$/i
 handler.limit = true
 handler.premium = true // hapus aja kalau saya sengaja premium makan kuota termux :)
 module.exports = handler
+
+async function shortlink(url) {
+    isurl = /https?:\/\//.test(url)
+    return isurl ? (await require('axios').get('https://tinyurl.com/api-create.php?url='+encodeURIComponent(url))).data : ''
+    }
