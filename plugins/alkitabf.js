@@ -1,8 +1,7 @@
 let fetch = require('node-fetch')
 let { JSDOM } = require('jsdom')
+
 let handler = async (m, { text, usedPrefix, command }) => {
-    let p = 0
-    let q = 0
     if (text=='list') throw `List Alkitab Perjanjian Lama dan Baru
 
     *PERJANJIAN LAMA*
@@ -10,7 +9,7 @@ let handler = async (m, { text, usedPrefix, command }) => {
 *${p+=1}.* Keluaran (Exodus)
 *${p+=1}.* Imamat (Leviticus)
 *${p+=1}.* Bilangan (Numbers)
-*${p+=1}.* Ulangan (Deuteronomy) 
+*${p+=1}.* Ulangan (Deuteronomy)
 *${p+=1}.* Yosua (Joshua)
 *${p+=1}.* Hakim-Hakim (Judges)
 *${p+=1}.* Rut (Ruth)
@@ -80,16 +79,18 @@ let handler = async (m, { text, usedPrefix, command }) => {
     if (!res.ok) throw await res.text()
     let html = await res.text()
     let { document } = new JSDOM(html).window
-        let result = [...document.querySelectorAll("#passage-text p")].map(el => {
-            return {
-                teks: el.textContent
-            }
-        })
-        if (result=='') return m.reply(`format salah\nex: ${usedPrefix + command} 1 timotius 2`)
-       m.reply( `Hasil pencarian : ${text}\n` + result.map(v => `${v.teks}`).join('\n────────────────────────\n'))
+
+let result = [...document.querySelectorAll("body div:nth-child(3) p:nth-child(1)")].map(el => {
+    return {
+        teks: el.textContent
+    }
+})
+if (result=='') return m.reply(`format salah\nex: ${usedPrefix + command} 1 timotius 2:5`)
+m.reply( `Hasil pencarian : ${text}\n` + result.map(v => `${v.teks}`).join('\n────────────────────────\n'))
+
 }
-handler.help = ['alkitab'].map(v => v + ' <pencarian>')
+handler.help = ['alkitabf'].map(v => v + ' <pencarian>')
 handler.tags = ['internet']
-handler.command = /^alkitab$/i
+handler.command = /^alkitabf$/i
 handler.limit = true
 module.exports = handler
