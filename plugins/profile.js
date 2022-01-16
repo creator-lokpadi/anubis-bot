@@ -15,7 +15,7 @@ let handler = async (m, { conn, usedPrefix }) => {
 
   } finally {
     let about = (await conn.getStatus(who).catch(console.error) || {}).status || ''
-    let { name, limit, exp, lastclaim, registered, regTime, age, level, role } = global.db.data.users[who]
+    let { name, limit, exp, lastclaim, registered, regTime, age, level, role, warning } = global.db.data.users[who]
     let { min, xp, max } = levelling.xpRange(level, global.multiplier)
     let username = conn.getName(who)
     let users = Object.entries(global.db.data.users).map(([key, value]) => {
@@ -33,6 +33,7 @@ XP: TOTAL ${exp} (${exp - min} / ${xp}) [${math <= 0 ? `Ready to *${usedPrefix}l
 Level: ${level}
 Role: *${role}*
 Limit: ${limit}
+Warning: ${warning}
 Registered: ${registered ? 'Yes (' + new Date(regTime) + ')': 'No'}
 Premium: ${prem ? 'Yes' : 'No'}${lastclaim > 0 ? '\nLast Claim: ' + new Date(lastclaim) : ''}
 `.trim()
@@ -47,7 +48,7 @@ let rank = await new canvacord.Rank()
 .setDiscriminator(discriminator)
 rank.build()
 .then(async data => {
-  await conn.sendButtonImg(m.chat, data, str, '© anubis-bot', 'Upgrade Level', `${usedPrefix}levelup`, m, { thumbnail: data, height: 282, width: 934 })
+  await conn.sendButtonImg(who, data, str, '© anubis-bot', 'Upgrade Level', `${usedPrefix}levelup`, m, { thumbnail: data, height: 282, width: 934 })
 })
 }
 }
