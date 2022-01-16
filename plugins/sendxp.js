@@ -1,5 +1,6 @@
 /*
 By : Anubiskun
+command buat owner send limit ke pengguna
 */
 let { MessageType } = require('@adiwajshing/baileys')
 let handler = async (m, { conn, text }) => {
@@ -14,7 +15,7 @@ let handler = async (m, { conn, text }) => {
   let exp = xp
   if (exp < 1) throw 'Minimal 1'
   let users = global.db.data.users
-  if (exp > users[m.sender].exp) throw 'Exp tidak mencukupi untuk mentransfer'
+  // if (exp > users[m.sender].exp) throw 'Exp tidak mencukupi untuk mentransfer'
   // aktivin di bawah kalo mau di bikin command umum
   // users[m.sender].exp -= exp
   users[who].exp += xp

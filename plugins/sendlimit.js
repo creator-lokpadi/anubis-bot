@@ -1,5 +1,6 @@
 /*
 By : Anubiskun
+command buat owner send limit ke pengguna
 */
 let { MessageType } = require('@adiwajshing/baileys')
 let handler = async (m, { conn, text }) => {
@@ -15,7 +16,7 @@ let handler = async (m, { conn, text }) => {
     limit += limit
     if (limit < 1) throw 'Minimal 1'
     let users = global.db.data.users
-    if (limit > users[m.sender].limit) throw 'Limit tidak mencukupi untuk mentransfer'
+    // if (limit > users[m.sender].limit) throw 'Limit tidak mencukupi untuk mentransfer'
     // aktivin di bawah kalo mau di bikin command umum
     // users[m.sender].limit -= limit
     users[who].limit += poin
