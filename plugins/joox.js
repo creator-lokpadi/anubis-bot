@@ -1,4 +1,6 @@
 const { joox } = require('../lib/scrape_joox')
+const fetch = require('node-fetch')
+const axios = require("axios")
 
 const isUrl = str => /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&/=]*)/gi.test(str)
 let handler = async (m, { conn, text, usedPrefix, command }) => {
@@ -7,6 +9,8 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
     const getidJoox = text.match(/https?:\/\/(www\.)?joox\.[a-z]+\/[a-z]+\/\w+\/([-a-zA-Z0-9()@:%_+.~#?&/=]*)/)
     let jjson = await joox(getidJoox[2])
     let json = jjson.data[Math.floor(Math.random() * jjson.data.length)]
+    // let res = await fetch(`https://www.api.anubiskun.xyz/joox/?song=${getidJoox[2]}`)
+    // let json = await res.json()
     if (json==null) return m.reply('error lagu ga bisa di download!')
     let pesan = `
 *Penyanyi:* ${json.msinger}
@@ -15,7 +19,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
 *Diterbitkan:* ${json.public_time}
 *Link:* ${await shortlink(json.mp3Url)}
 `.trim()
-    conn.sendFile(m.chat, json.imgSrc, 'anubis-bot.jpg', pesan, m, false, { thumbnail: Buffer.alloc(0) })
+    conn.sendButtonImg(m.chat, json.imgSrc, pesan, '© anubis-bot', 'Lyric', `${usedPrefix}jlll ${text}`, m, { thumbnail: json.imgSrc, height: 500, width: 500 })
     conn.sendFile(m.chat, json.mp3Url, 'anubis-bot.mp3', '', m, false, { mimetype: 'audio/mp4' })
 }
 
@@ -23,7 +27,6 @@ handler.help = ['joox'].map(v => v + ' <url>')
 handler.tags = ['downloader']
 handler.command = /^(joox|jxdl)$/i
 handler.limit = true
-handler.premium = true // hapus aja kalau saya sengaja premium makan kuota termux :)
 module.exports = handler
 
 async function shortlink(url) {

@@ -2,7 +2,7 @@ let fetch = require('node-fetch')
 
 const isUrl = str => /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&/=]*)/gi.test(str)
 let handler = async (m, { conn, text, usedPrefix, command }) => {
-    if (isUrl(text)) throw `*Perintah ini untuk mencari lagu joox berdasarkan pencarian*\n\ncontoh:\n${usedPrefix + command} 1nonly`
+    if (isUrl(text)) throw `*Perintah ini untuk mencari lagu dan lyric joox berdasarkan pencarian*\n\ncontoh:\n${usedPrefix + command} 1nonly\n${usedPrefix + command} 1nonly shakira`
   let res = await fetch(`https://api-jooxtt.sanook.com/openjoox/v2/search_type?country=id&lang=id&key=${text}&type=0`)
   let json = await res.json()
   if (json.tracks==null){
@@ -17,7 +17,12 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
                               "title": "MP3",
 							  description: `Title: ${xres[0].name}`,
                               "rowId": `.jxdl https://www.joox.com/id/single/${xres[0].id}`
-                           }
+                           },
+                           {
+                            "title": "Lyric",
+              description: `Title: ${xres[0].name}`,
+                            "rowId": `.jlll https://www.joox.com/id/single/${xres[0].id}`
+                         }
                         ], title: i+1})
 			})
 			let po = conn.prepareMessageFromContent(m.chat, {
@@ -31,9 +36,9 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
   
   } 
 }
-handler.help = ['jooxf'].map(v => 'jooxf  <pencarian>')
+handler.help = ['jooxfind', 'jooxlyric'].map(v => v + ' <pencarian>')
 handler.tags = ['downloader']
-handler.command = /(jooxf|jf)/i
+handler.command = /(jooxlyric|jooxfind|jf)/i
 
 handler.limit = true
 module.exports = handler
