@@ -1,7 +1,7 @@
 let fs = require('fs')
 let chalk = require('chalk')
 
-global.owner = ['6289653909054','6281282091206'] 
+global.owner = ['6282321720820'] 
 global.mods = [] 
 global.prems = [] 
 global.APIs = { 
@@ -25,8 +25,8 @@ global.APIKeys = {
 const spack = fs.readFileSync("lib/exif.json")
 const stickerpack = JSON.parse(spack)
 if (stickerpack.spackname == '') {
-  var sticker_name = 'fuck you by anubis'
-  var sticker_author = '+6289653909054 anubis-BOT'
+  var sticker_name = 'fuck you'
+  var sticker_author = 'TEAMCREATORLOKPADI'
 } else {
   var sticker_name = stickerpack.spackname
   var sticker_author = stickerpack.sauthor
@@ -42,7 +42,7 @@ fs.watchFile(file_exif, () => {
 
 global.packname = sticker_name
 global.author = sticker_author
-global.wm = '© anubiskun'
+global.wm = 'TEAMCREATORLOKPADI'
 global.wait = '_*tunggu sedang diproses...*_'
 global.eror = '_*Server Error*_'
 global.benar = '✅'
