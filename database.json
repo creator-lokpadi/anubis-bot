@@ -1,0 +1,117 @@
+{
+  "users": {
+    "6281376576713@s.whatsapp.net": {
+      "exp": 146,
+      "limit": 10,
+      "lastclaim": 0,
+      "registered": false,
+      "name": "+62 813-7657-6713",
+      "age": -1,
+      "regTime": -1,
+      "afk": -1,
+      "afkReason": "",
+      "banned": false,
+      "pc": 0,
+      "level": 0,
+      "role": "Beginner",
+      "autolevelup": false
+    },
+    "6282321720820@s.whatsapp.net": {
+      "exp": 67,
+      "limit": 100000,
+      "lastclaim": 0,
+      "registered": false,
+      "name": "YTCREATORLOKPADI",
+      "age": -1,
+      "regTime": -1,
+      "afk": -1,
+      "afkReason": "",
+      "banned": false,
+      "pc": 0,
+      "level": 100,
+      "role": "Beginner",
+      "autolevelup": true
+    }
+  },
+  "chats": {
+    "6281376576713@s.whatsapp.net": {
+      "isBanned": false,
+      "welcome": false,
+      "detect": false,
+      "sWelcome": "",
+      "sBye": "",
+      "sPromote": "",
+      "sDemote": "",
+      "delete": true,
+      "antiLink": false,
+      "antiSticker": false,
+      "getmsg": false,
+      "simi": false,
+      "viewonce": false
+    },
+    "6282321720820@s.whatsapp.net": {
+      "isBanned": false,
+      "welcome": false,
+      "detect": false,
+      "sWelcome": "",
+      "sBye": "",
+      "sPromote": "",
+      "sDemote": "",
+      "delete": true,
+      "antiLink": false,
+      "antiSticker": false,
+      "getmsg": false,
+      "simi": false,
+      "viewonce": false
+    },
+    "6285245709490-1542871078@g.us": {
+      "isBanned": false,
+      "welcome": false,
+      "detect": false,
+      "sWelcome": "",
+      "sBye": "",
+      "sPromote": "",
+      "sDemote": "",
+      "delete": true,
+      "antiLink": false,
+      "antiSticker": false,
+      "getmsg": false,
+      "simi": false,
+      "viewonce": false
+    }
+  },
+  "stats": {
+    "menu.js": {
+      "total": 15,
+      "success": 15,
+      "last": 1644134704373,
+      "lastSuccess": 1644134704373
+    },
+    "neko.js": {
+      "total": 3,
+      "success": 3,
+      "last": 1644132187403,
+      "lastSuccess": 1644132187403
+    },
+    "creator.js": {
+      "total": 2,
+      "success": 2,
+      "last": 1644132218880,
+      "lastSuccess": 1644132218880
+    }
+  },
+  "msgs": {},
+  "sticker": {},
+  "settings": {
+    "6281376576713@s.whatsapp.net": {
+      "anticall": false,
+      "autoread": false,
+      "nyimak": false,
+      "restrict": false,
+      "self": false,
+      "pconly": false,
+      "gconly": false,
+      "jadibot": false
+    }
+  }
+}
